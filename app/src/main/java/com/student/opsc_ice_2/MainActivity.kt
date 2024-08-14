@@ -64,8 +64,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, GoalDetailActivity::class.java).apply {
                     putExtra("goalTitle", goal.first)
                     putExtra("goalDescription", goal.second)
+                    putExtra("goalCompleted", goal.third)
+                    putExtra("goalPosition", position)
                 }
-                startActivity(intent)
+                startActivityForResult(intent, 1)
             }
         }
 
@@ -81,9 +83,21 @@ class MainActivity : AppCompatActivity() {
                 goalDescription.text = goal.second
                 goalCompleted.isChecked = goal.third
 
-                goalCompleted.setOnCheckedChangeListener { _, isChecked ->
-                    goalsList[adapterPosition] = Triple(goal.first, goal.second, isChecked)
-                }
+                // Disable checkbox interaction on the main activity
+                goalCompleted.isEnabled = false
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            val position = data?.getIntExtra("goalPosition", -1)
+            val isCompleted = data?.getBooleanExtra("goalCompleted", false)
+
+            if (position != null && position != -1 && isCompleted != null) {
+                goalsList[position] = goalsList[position].copy(third = isCompleted)
+                goalsRecyclerView.adapter?.notifyItemChanged(position)
             }
         }
     }

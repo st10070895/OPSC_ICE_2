@@ -16,7 +16,7 @@ class SettingsActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
 
-        val toggleDarkModeButton = findViewById<Button>(R.id.btnToggleDarkMode)
+        val toggleDarkModeButton = findViewById<Button>(R.id.switchDarkMode)
         toggleDarkModeButton.setOnClickListener {
             val currentMode = sharedPreferences.getBoolean("dark_mode", false)
             val editor = sharedPreferences.edit()
