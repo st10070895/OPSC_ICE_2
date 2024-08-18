@@ -1,0 +1,19 @@
+Features:
+Goal Setting: Easily create new goals by specifying a title and description.
+Goal Tracking: View a list of all your goals on the main screen.
+Goal Completion: Mark your goals as completed from the Goal Detail page.
+Dark Mode: Toggle between light and dark themes via the Settings page.
+
+Usage
+
+Main Activity
+View Goals: The main screen displays a list of all your goals.
+Enter details such as: Goal Title , Gaol description
+Add a New Goal: Tap the "ADD GOAL" button to create a new goal.
+A checkbox is displayed next to each goal title, indicating its completion status. The checkbox is only viewable from this screen.
+
+Goal Detail Activity
+Edit Goal: Tap on a goal in the main list to view its details. You can mark it completed here.
+
+Settings Activity
+Toggle Dark Mode: Enable or disable dark mode via a toggle switch. The theme setting is saved in the app's preferences and will persist even after restarting the app.
