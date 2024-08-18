@@ -9,12 +9,14 @@ import androidx.appcompat.app.AppCompatDelegate
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var backButton: Button // Changed to backButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
         sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        backButton = findViewById(R.id.btnHome) // Update to reflect the new role
 
         val toggleDarkModeButton = findViewById<Button>(R.id.switchDarkMode)
         toggleDarkModeButton.setOnClickListener {
@@ -28,6 +30,10 @@ class SettingsActivity : AppCompatActivity() {
                 else AppCompatDelegate.MODE_NIGHT_YES
             )
             recreate()
+        }
+
+        backButton.setOnClickListener {
+            finish() // Close the current activity and go back to the previous one
         }
     }
 }
